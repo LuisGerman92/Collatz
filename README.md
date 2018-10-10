@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+# Collatz Conjecture
 
-You can use the [editor on GitHub](https://github.com/LuisGerman92/Collatz/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This is a famous problem in mathematics. One of the reasons it is so famous is that, although the statement of the problem is very simple, there is currently no solution to this problem.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Statement of the problem
 
-### Markdown
+The problem can be stated as follows:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Take a positive integer n, and apply the following transformation repeatedly:
 
-```markdown
-Syntax highlighted code block
+n -> (3*n +1) , if n is odd
+n -> n/2      , if n is even
 
-# Header 1
-## Header 2
-### Header 3
+Let's see some examples for different values of n:
 
-- Bulleted
-- List
+n = 1: 1 -> 4 -> 2 -> 1 -> 4 -> 2 ... (Cycles forever)
+n = 3: 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+n = 6: 6 -> 3 -> 10 -> 5 ... (subsequence of n=5)
+n = 7: 7 -> 22 -> 11 -> 34 -> 17 -> 52 -> 26 -> 13 -> 40 -> 20 -> 10 -> 5 ... (subsequence of n=5)
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/LuisGerman92/Collatz/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+For the four examples shown above, we can see that all sequences end in the number 1 and the cycle (4 -> 2 -> 1) repeats forever.
+This seems to be the case for all positive integers.
