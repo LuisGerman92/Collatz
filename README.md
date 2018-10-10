@@ -9,6 +9,7 @@ The problem can be stated as follows:
 Take a positive integer n, and apply the following transformation repeatedly:
 
 n -> (3*n +1) , if n is odd
+
 n -> n/2      , if n is even
 
 Let's see some examples for different values of n:
