@@ -24,7 +24,7 @@ n = 7: 7 -> 22 -> 11 -> 34 -> 17 -> 52 -> 26 -> 13 -> 40 -> 20 -> 10 -> 5 ... (s
 
 
 For the four examples shown above, we can see that all sequences end in the number 1 and the cycle (4 -> 2 -> 1) repeats forever.
-This seems to be the case for all positive integers.
+The Collatz conjecture states that the sequence of transformations for any positive integer will reach 1. This also has the implication that, except for (4 -> 2 -> 1 -> 4 ...), there are no other cycles or loops.
 
 ## Finding the sequence for any number with Python
 
