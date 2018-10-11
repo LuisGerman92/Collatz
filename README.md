@@ -330,3 +330,5 @@ This is because the string representation for 4 is 'LL', and this corresponds to
 If we take n = -1/9, then L(-1/9) = (3(-1/9)+1)/2 = (-1/3+1)/2 = 1/3, and L(L(-1/9)) = L(1/3) = (3(1/3)+1)/2 = 1.
 
 After modification to the functions to work with fractions instead of plain floating point, we can now fill the entire tree with this method:
+
+![Complete_collatz_tree](complete_collatz_tree.png)
