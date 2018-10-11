@@ -267,3 +267,4 @@ def int2binaryTree(n):
     return lr_out
 ```
 With this function we can traverse the tree, or, equivalent, we can assign a positive integer to every node in the tree as shown next:
+![Binary_tree_integers](binary_tree_integers.png)
