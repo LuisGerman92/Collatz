@@ -106,3 +106,26 @@ plot 'steps_data.txt' using 1:2 pt 7 ps 0.1
 We can now plot the steps required to reach 1 for the first 10,000 integers:
 
 ![Collatz_10000](Collatz_steps_10000.png)
+
+
+### Binary representation of the sequence
+
+Since any sequence only contains integer numbers, and the transformations only involve addition, multiplication, and division, it might be an interesting idea to see if we can find a pattern in the binary representation of the numbers and their transformations.
+
+First, we write a function to print the binary representation of an integer number:
+
+```python
+def dispBinary(n):
+    if n==0:
+        return ''
+    out = ''
+    while (not (n==1)):
+        if (n%2 == 1):
+            out += '1'
+        else:
+            out += '0'
+        n = int(n/2)
+    out += '1'
+    return out[::-1]
+```
+Then, we can modify [Collatz_1.py](https://github.com/LuisGerman92/Collatz/blob/master/collatz_1.py) to display the binary representation of the number at each step of the sequence, next to each number.
