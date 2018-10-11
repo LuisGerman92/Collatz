@@ -230,3 +230,40 @@ Except for powers of two and slide numbers, the path for a given number seems to
 We can look at the integers as nodes in a binary tree, where the left branch of each node is an 'L' transformation, and likewise, an 'R' transformation will correspond to the right branch of the node. Following this scheme, we can build the infinite Collatz tree:
 
 ![Collatz_tree](collatz_tree.png)
+
+The Collatz conjecture implies that all positive integers appear in this tree. This tree is an incomplete version of a binary tree. The reason it is incomplete is that some sequences of transformations for which no integer will reach one. 
+
+**However, what is the meaning of these sequences?**
+If we consider R(n) = n/2 and L(n) = (3n+1)/2, then the strings of transformations are the compositions of transformations, acting on n.
+For instance, the string 'RLRRR' corresponds to R(L(R(R(R(n))))). The fact that the string 'RLRRR' is associated with the integer 10 means that R(L(R(R(R(10))))) = 1.
+If we then denote the inverse of the composition 'RLRRR' as I_RLRRR(n), we will find that I_RLRRR(1) = 10.
+
+I_str(n) = r means simply to find a number r for which the sequence of transformations denoted by str is n.
+
+If we solve I_str(1) for all sequences of strings of finite length that contain only 'L' and 'R', then we can find values for the remaining nodes on the Collatz tree.
+
+### Completing the Collatz tree
+In order to fill the tree, we need a way to traverse the tree and generate the associated string of transformations for the nodes in the tree.
+First, in order to traverse the tree in order from the root nodes, we need a function that takes an integer n and returns the 'LR' string sequence:
+```python
+def int2binaryTree(n):
+    if n==1:
+        return 'X'
+    out = ''
+    numOfBits = int(log2(n))
+    binaryNum = dispBinary(n-pow(2,numOfBits))
+    for i in range(numOfBits-len(binaryNum)):
+        # append ceros
+        out += '0'
+    # append binary representation of number
+    out += binaryNum
+    # convert every 0 to 'L' and every 1 to 'R'
+    lr_out = ''
+    for char in out:
+        if char == '0':
+            lr_out += 'L'
+        if char == '1':
+            lr_out += 'R'
+    return lr_out
+```
+With this function we can traverse the tree, or, equivalent, we can assign a positive integer to every node in the tree as shown next:
