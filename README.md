@@ -105,4 +105,4 @@ plot 'steps_data.txt' using 1:2 pt 7 ps 0.1
 
 We can now plot the steps required to reach 1 for the first 10,000 integers:
 
-[Collatz_10000]: https://github.com/LuisGerman92/Collatz/blob/master/Collatz_steps_10000.png "Collatz steps up to 10,000"
+[Collatz_10000]: https://raw.githubusercontent.com/LuisGerman92/Collatz/blob/master/Collatz_steps_10000.png "Collatz steps up to 10,000"
