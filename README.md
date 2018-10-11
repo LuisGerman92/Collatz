@@ -267,4 +267,66 @@ def int2binaryTree(n):
     return lr_out
 ```
 With this function we can traverse the tree, or, equivalent, we can assign a positive integer to every node in the tree as shown next:
+
 ![Binary_tree_integers](binary_tree_integers.png)
+
+Now, we need to find a way to solve I_str(1) for a given n. For this, we need to notice the following:
+
+    - Both L(n) = (3n+1)/2 and R(n) = n/2 are linear functions.
+    - The composition of any two linear functions results in a linear function. Therefore,
+    - Any sequence of transformations is a linear function.
+    
+This tells us that the plot of I_str(x) is a straight line for any str. Solving I_str(x) = 1 means finding the x value for which y=1. Since this is a linear equation, let's consider the equation of this line as y = mx + b. We want to find the value for x when y = 1. Therefore, we need to calculate m and b, and solve for x:
+
+x = (y - b)/m
+
+Since m is the slope of the line, we can find it as follows:
+
+m = (I_str(2)-I_str(1))/(2-1) = I_str(2)-I_str(1)
+
+The constant b is simply the y coordinate when x = 0:
+
+b = y(x=0) = I_str(0)
+
+With this, we can find the x value for any string. The following function calculates I_str(n) for a positive integer n and a given sequence str:
+
+```python
+def I_str(n,seq):
+    for step in seq:
+        if step == 'L':
+            # left transformation
+            #n = (3*n - 1) / 2
+            n = (3*n + 1) / 2
+        if step == 'R':
+            # right transformation
+            n = n/2
+    return n
+```
+
+With this function we can now, using any positive integer as index for the binary tree, find its corresponding node, obtain its sequence of transformations, and calculate the corresponding Collatz number (even if it is not an integer). This is done by the following NinTree function:
+
+```python
+# calculates the number in the Collatz tree
+def NinTree(n):
+    # obtain the tree representation of n
+    str_tree = int2binaryTree(n)
+    # calculate the N for which the transformation str_tree will give 0
+    x = (1 - I_str(0,str_tree))/(I_str(2,str_tree)-I_str(1,str_tree))
+    return x
+```
+
+Calling this function with the first 7 integers we obtain the following results:
+
+    - NinTree(1) = 1.0
+    - NinTree(2) = 0.333...
+    - NinTree(3) = 2.0
+    - NinTree(4) = -0.111...
+    - NinTree(5) = 1.0
+    - NinTree(6) = 0.666...
+    - NinTree(7) = 4.0
+
+As expected, NinTree(n) is 1, 2, and 4, for the rightmost branches of the tree. However, NinTree(4) is -0.111... = -1/9.
+This is because the string representation for 4 is 'LL', and this corresponds to applying two times the transformation (3n+1)/2.
+If we take n = -1/9, then L(-1/9) = (3(-1/9)+1)/2 = (-1/3+1)/2 = 1/3, and L(L(-1/9)) = L(1/3) = (3(1/3)+1)/2 = 1.
+
+After modification to the functions to work with fractions instead of plain floating point, we can now fill the entire tree with this method:
