@@ -227,4 +227,6 @@ Next is shown the path function for the first 10 integers:
 
 Except for powers of two and slide numbers, the path for a given number seems to be unpredictable. However, because the Collatz conjecture states that all numbers eventually reach 1, this implies that the path must be of finite length.
 
-We can look at the integers as nodes in a binary tree, where the left branch of each node is an 'L' transformation, and likewise, an 'R' transformation will correspond to the right branch of the node.
+We can look at the integers as nodes in a binary tree, where the left branch of each node is an 'L' transformation, and likewise, an 'R' transformation will correspond to the right branch of the node. Following this scheme, we can build the infinite Collatz tree:
+
+![Collatz_tree](collatz_tree.png)
